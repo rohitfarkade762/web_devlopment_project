@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <style>
+        h1{color: #7b9418;}
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        .products, .cart-items { display: flex; gap: 20px; flex-wrap: wrap; }
+        .product, .cart-item { border: 1px solid #ddd; padding: 10px; width: 30%; }
+        .nav { background: #f4f4f4; padding: 10px; }
+        .nav a { margin-right: 20px; text-decoration: underline; }
+        .hidden { display: none; }
+        .payment{margin-bottom: 5px;}
+        
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <h1>15-miniuts</h1>
+        <a href="#" onclick="showPage('items')">Items</a>
+        <a href="#" onclick="showPage('cart')">Cart (<span id="cart-count">0</span>)</a>
+        <a href="#" onclick="showPage('payment')">Payment</a>
+    </nav>
+
+    <div id="items" class="container">
+        <h2>Items</h2>
+        <div class="products">
+            <div class="product" data-id="1" data-name="Product 1" data-price="20">
+                <h3>Product 1</h3>
+                <p>20₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="2" data-name="Product 2" data-price="30">
+                <h3>Product 2</h3>
+                <p>30₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="3" data-name="Product 3" data-price="40">
+                <h3>Product 3</h3>
+                <p>40₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="4" data-name="Product 4" data-price="50">
+                <h3>Product 4</h3>
+                <p>50₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="5" data-name="Product 5" data-price="60">
+                <h3>Product 5</h3>
+                <p>60₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="6" data-name="Product 6" data-price="70">
+                <h3>Product 6</h3>
+                <p>70₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart" class="container hidden">
+        <h2>Cart</h2>
+        <div class="cart-items"></div>
+        <p>Total</p>
+        <p id = "sumprice"> 0</p>
+        <button onclick="showPage('payment')">Proceed to Payment</button>
+    </div>
+
+    <div id="payment" class="container hidden">
+        <h2>Payment</h2>
+        <p>Enter your payment details.</p>
+        <form action="submit">
+            <label for="upi">Upi id :</label><br>
+  <input type="text" id="upi" upi_id="lname">
+        </form>
+        <p id = "sumprice2"> 0</p>
+        <button onclick="alert('Payment Successful!')">Pay Now</button>
+    </div>
+    <script>
+    let cart = [];
+
+    function addToCart(button) {
+        const product = button.parentElement;
+        const id = product.dataset.id;
+        const name = product.dataset.name;
+        const price = parseFloat(product.dataset.price);
+        cart.push({ id, name, price });
+        document.getElementById('cart-count').innerText = cart.length;
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartContainer = document.querySelector('.cart-items');
+        cartContainer.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach((item, index) => {
+            totalPrice += item.price;
+            const div = document.createElement('div');
+            div.classList.add('cart-item');
+            div.innerHTML = `${item.name} - ${item.price}₹ <button onclick="removeFromCart(${index})">Remove</button>`;
+            cartContainer.appendChild(div);
+        });
+
+        document.getElementById('sumprice').innerText = `${totalPrice}₹`;
+        document.getElementById('sumprice2').innerText = `${totalPrice}₹`;
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        document.getElementById('cart-count').innerText = cart.length;
+        updateCart();
+    }
+
+    function showPage(page) {
+
+        document.getElementById('items').classList.add('hidden');
+        document.getElementById('cart').classList.add('hidden');
+        document.getElementById('payment').classList.add('hidden');
+        document.getElementById(page).classList.remove('hidden');
+    }
+</script>
+
+    
+</body>
+</html>
