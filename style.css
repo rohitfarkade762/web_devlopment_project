@@ -1,0 +1,13 @@
+h1 { color: #7b9418; }
+body { font-family: Arial, sans-serif; }
+.container { width: 80%; margin: auto; }
+.products, .cart-items { display: flex; gap: 30px; flex-wrap: wrap; }
+
+
+.product, .cart-item { border: 1px solid #ddd; padding: 10px; width: 30%; }
+        .cart-item img { width: 50px; height: auto; }
+        .nav { background: #f4f4f4; padding: 10px; }
+        .nav a { margin-right: 20px; text-decoration: underline; }
+        .hidden { display: none; }
+        .payment { margin-bottom: 5px; }
+        .cart-item button{margin-right: 3px;}

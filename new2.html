@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <h1>15-Minutes</h1>
+        <a href="#" onclick="showPage('items')">Items</a>
+        <a href="#" onclick="showPage('cart')">Cart (<span id="cart-count">0</span>)</a>
+        <a href="#" onclick="showPage('payment')">Payment</a>
+    </nav>
+
+    <div id="items" class="container">
+        <h2>Items</h2>
+        <div class="products">
+            <div class="product" data-id="1" data-name="Amul Milk Fresh 250ml   " data-price="20">
+                <img src="New folder/Product 1.jpg" alt="Product 1">
+                <h3>Amul Milk 250ml   </h3>
+                <p>20₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="2" data-name="Thums Up Soft Drink" data-price="40">
+                <img src="New folder/Product 2.jpg" alt="Product 2">
+                <h3>Thums Up Soft Drink</h3>
+                <p>40₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="3" data-name="Coca-Cola Diet Coke Soft Drink" data-price="40">
+                <img src="New folder/Product 3.jpg" alt="Product 3">
+                <h3>Coca-Cola Diet Coke Soft Drink</h3>
+                <p>40₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="4" data-name="Oranges 1kg" data-price="50">
+                <img src="New folder/Product 4.jpg" alt="Oranges 1kg">
+                <h3>Oranges 1kg</h3>
+                <p>50₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="5" data-name="Banana 12" data-price="60">
+                <img src="New folder/Product 5.jpg" alt="Banana">
+                <h3>Banana 12</h3>
+                <p>60₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="6" data-name="Bisleri Packaged Water (1l)" data-price="70">
+                <img src="New folder/Product 6.jpg" alt="Product 6">
+                <h3>Bisleri Packaged Water (1l)</h3>
+                <p>20₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="2" data-name="Harvest Gold Hearty Brown Bread" data-price="40">
+                <img src="New folder/Product 7.jpg" alt="Product 2">
+                <h3>Harvest Gold Hearty Brown Bread</h3>
+                <p>40₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="2" data-name="Sprite Lime Flavored Soft Drink 750 ml" data-price="40">
+                <img src="New folder/Product 8.jpg" alt="Product 2">
+                <h3>Sprite Lime Flavored Soft Drink 750 ml</h3>
+                <p>40₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="2" data-name="Britannia Good Day Cashew Biscuit" data-price="40">
+                <img src="New folder/Product 9.jpg" alt="Product 2">
+                <h3>Britannia Good Day Cashew Biscuit</h3>
+                <p>40₹</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart" class="container hidden">
+        <h2>Cart</h2>
+        <div class="cart-items"></div>
+        <p>Total</p>
+        <p id="sumprice">0₹</p>
+        <button onclick="showPage('payment')">Proceed to Payment</button>
+    </div>
+
+    <div id="payment" class="container hidden">
+        <h2>Payment</h2>
+        <p>Enter your payment details.</p>
+        <form action="submit">
+            <label for="upi">UPI ID:</label><br>
+            <input type="text" id="upi" name="upi_id">
+        </form>
+        <p id="sumprice2">0₹</p>
+        <button onclick="alert('Payment Successful!')">Pay Now</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
